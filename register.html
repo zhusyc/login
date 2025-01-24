@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        body{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #ffe3ec;
+            background-size: cover;
+            background-position: center;
+        }
+        .box{
+            z-index: 10;
+            position: relative;
+            width: 85%;
+            height: 90vh;
+            background: url(bck.png) 0% 0% / 55% 100% no-repeat rgb(255, 255, 255);
+            border-radius: 20px;
+            /* backdrop-filter: blur(15px); */
+        }
+        .login{
+            position: absolute;
+            right: 15%;
+            top: 20%;
+            width: 25vw;
+            background: transparent;
+            border: 2px solid rgba(255,255,255,0.5);
+            border-radius: 20px;
+            /* backdrop-filter: blur(25px); */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .login h1{
+            font-size: 2.8em;
+            color: #ffaca1;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+       .inputBox{
+            position: relative;
+            width: 100%;
+            margin: .2rem 0;
+            /* border-bottom: 2px solid #000000; */
+        }
+        .input{
+            margin: .2rem 0;
+            width: 100%;
+        }
+        span{
+            font-size: 1em;
+            color: #333;
+            margin: 0 2rem 0 0;
+            cursor: pointer;
+        }
+       .inputBox input{
+            width: 100%;
+            height: 3.5rem;
+            background: transparent;
+            outline: none;
+            font-size: 1em;
+            color: #000000;
+            border: #818181 solid 1px;
+            border-radius: 4rem;
+            padding: 0 1rem 0 1rem;
+            margin: .5rem 0;
+        }
+        .inputBox .verify {
+            width: 60%;
+            height: 3.5rem;
+            background: transparent;
+            outline: none;
+            font-size: 1em;
+            color: #000000;
+            border: #818181 solid 1px;
+            border-radius: 4rem;
+            padding: 0 1rem 0 1rem;
+            margin: .5rem 0;
+        }
+        .inputBox button {
+            height:100%;
+            width: 30%;
+            border-radius:1rem;
+            border: #ddd solid 1px;
+            background-color: rgb(255, 207, 195);
+            padding: .5rem;
+            color: white;
+        }
+        label {
+            margin:0 0 1rem 1rem;
+            color:#999;
+            cursor:pointer;
+        }
+        form{
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .op {
+            width: 100%;
+            height: 2.8rem;
+            background: #ffcfc3;
+            border: none;
+            outline: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-size: 1.2em;
+            color: #fff;
+            margin: 1rem 0 0 0;
+            text-align: center;
+        }
+        .op:hover{
+            background: #ff9999;
+        }
+        .bottom {
+            position: fixed;
+            width: 80vw;
+            height: 25.4vw;
+            aspect-ratio: 1 / 1;
+            --note-text-color: #e0ecffcc;
+            --note-arrow-icon-bg: #45454e;
+            --note-arrow-icon-color: #e0ecffcc;
+            --note-bg: conic-gradient( from 180deg at 50% 50%, #ff8cf3 0deg, #7f9bff 72.0000010728836deg, #3afff3 185.3999948501587deg, #c058ff 266.40000343322754deg ), #262630;
+            --note-button-border-bg: conic-gradient( from 90deg at 50% 50%, #5e28f5 -122.4deg, #5ed8f3 50.4deg, #666666 129.6deg, #5e28f5 237.6deg, #5ed8f3 410.4deg ), linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2));
+            --note-button-shadow: 0px 4px 7px 0px #0000004d;
+            --note-button-bg: rgb(38, 38, 48);
+            --blur-top: calc(70% + 12.6vw) ;
+            --blur-top-hover: calc(100% + 12.6vw - 70px) ;
+            --blur-opacity: .35;
+            --blur-opacity-hover: .5;
+        }
+        .blur {
+            filter: blur(5.336vw);
+            position: fixed;
+            top: var(--blur-top);
+            left: 80%;
+            z-index: 9;
+            width: 80vw;
+            transition: transform .8s cubic-bezier(.4,0,.2,1), opacity .8s cubic-bezier(.4,0,.2,1);
+            opacity: var(--blur-opacity);
+            pointer-events: none;
+        }
+        .b {
+            border-radius: 50%;
+            background: var(--note-bg);
+            transform: translate(-50%, -50%) rotateX(71deg);
+            aspect-ratio: 1 / 1;
+            animation: rotate-73289ebd 4s linear infinite;
+        }
+
+        @keyframes rotate-73289ebd{
+            0% {
+                transform: translate(-50%, -50%) rotateX(75deg) rotate(0);
+            }
+            100% {
+                transform: translate(-50%, -50%) rotateX(75deg) rotate(360deg);
+            }
+        }
+        .otherLogin {
+            width: 100%;
+            height: 2.8rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 3rem;
+        }
+        .otherLogin img {
+            width: 2.5rem;
+        }
+        @media screen and (max-width: 768px) {
+            .box {
+                z-index: 10;
+                position: relative;
+                width: 100%;
+                height: 100vh;
+                /* background: url(bck.png) 0% 0% / 100% 100% no-repeat rgb(255, 255, 255); */
+                background: white;
+                border-radius: 20px;
+                backdrop-filter: blur(15px);
+            }
+            .login {
+                width: 80vw;
+                height: 100vh;
+                right: 10vw;
+                top: 0;
+            }
+           .bottom {
+                width: 70vw;
+                height: 20.4vw;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        
+            <div class="login">
+                <h1>注 册</h1>
+                <form action="login.php" method="post">
+                    <div class="inputBox">
+                        <label>使用手机号注册</label>
+                        <input type="text" name="username" required="required">
+                    </div>
+                    <div class="inputBox">
+                        <label>密码</label>
+                        <input type="password" name="password" required="required">
+                    </div>
+                    <div class="inputBox">
+                        <div style="display: flex; align-items: center; gap: 1.5rem;">
+                            <input class="verify" type="text" name="verify" required="required">
+                            <button>获取验证码</button>
+                        </div>
+                    </div>
+                    <input class="op" id="login" type="submit" name="submit" value="注  册">
+                    <div style="margin: 1rem 0 0 0;">
+                        <span style="color:#666666;">已有账号？</span>
+                        <a href="index.html" style="color:#ffc4a8;">登录</a>
+                    </div>                    
+                </form>
+            </div>
+        </div>
+    
+    <div class="bottom" style="bottom: 0%; right: 0%">
+        <div class="blur">
+            <div class="b">
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('mousemove', function(e){
+            var x = e.clientX;
+            var y = e.clientY;
+            var blur = document.querySelector('.blur');
+            blur.style.left = x + 'px';
+            blur.style.top = y + 'px';
+        });
+        const rempsd = document.querySelector('#rempsd');
+        rempsd.addEventListener('click', function(){
+            document.querySelector('input[type="checkbox"]').checked = !document.querySelector('input[type="checkbox"]').checked;
+            console.log(document.querySelector('input[type="checkbox"]').checked);
+            
+        });
+    </script>
+</body>
+</html>
